@@ -1,0 +1,27 @@
+.button {
+  padding: 10px 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 0 black;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:focus {
+  position: relative;
+  top: 2px;
+  box-shadow: none;
+}
+
+.input-btn {
+  width: 100%;
+  background: var(--secondary-color);
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
