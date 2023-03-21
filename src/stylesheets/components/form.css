@@ -16,8 +16,13 @@ input[type="text"] {
   border-radius: 8px;
   border: 1.5px solid #000;
   text-indent: 5px;
+  transition: all 0.3s ease;
 }
 
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+}
 
 @media(max-width: 768px) {
   .input-container {
