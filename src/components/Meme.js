@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import data from '../meme_data.js';
 
-const Form = () => {
-  const [memeImage, setMemeImage] = useState("https://i.imgflip.com/46hhvr.jpg")
+const Meme = () => {
+  const [memeImage, setMemeImage] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "https://i.imgflip.com/23ls.jpg"
+  })
+
   const memes = data.data.memes;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const randomNumber = Math.floor(Math.random() * memes.length)
     const randomMeme = memes[randomNumber].url
-    console.log(randomMeme)
-    setMemeImage(randomMeme)
+    setMemeImage(prevState => {
+      return {
+        ...prevState,
+        randomImage: randomMeme
+      }
+    })
   }
 
   return (
@@ -22,9 +31,9 @@ const Form = () => {
         </div>
         <button onClick={handleSubmit} type="submit" className="button input-btn">Search meme</button>
       </form>
-      <img src={memeImage} alt="random meme" className="meme-image"/>
+      <img src={memeImage.randomImage} alt="random meme" className="meme-image"/>
     </div>
   )
 };
 
-export default Form;
+export default Meme;
