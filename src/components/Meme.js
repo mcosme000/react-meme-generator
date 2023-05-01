@@ -31,7 +31,9 @@ const Meme = () => {
         </div>
         <button onClick={handleSubmit} type="submit" className="button input-btn">Search meme</button>
       </form>
-      <img src={memeImage.randomImage} alt="random meme" className="meme-image"/>
+      <div className="image-container">
+        <img src={memeImage.randomImage} alt="random meme" className="meme-image"/>
+      </div>
     </div>
   )
 };
