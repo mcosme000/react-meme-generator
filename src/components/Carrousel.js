@@ -1,9 +1,10 @@
 import React from 'react'
+import Image from './Image'
 
-const Carrousel = ({searchArray}) => {
+const Carrousel = ({data}) => {
 
-  const renderImages = searchArray.map((img) => {
-    return <img src={img.url} key={img.id} alt="Meme result"/>
+  const renderImages = data.map((img) => {
+    return <Image data={img} key={img.id} alt="Meme result"/>
   })
 
   return (

@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 
-const SearchMeme = ({handleSubmit}) => {
+const SearchForm = ({onSubmit}) => {
 
   const [keyword, setKeyword] = useState('')
+
   const handleChange = (e) => {
     setKeyword(e.target.value)
   }
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    handleSubmit(keyword)
+    onSubmit(keyword)
     setKeyword('')
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="search for a meme"
@@ -26,4 +27,4 @@ const SearchMeme = ({handleSubmit}) => {
   )
 }
 
-export default SearchMeme
+export default SearchForm
