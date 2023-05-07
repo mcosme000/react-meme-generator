@@ -8,7 +8,7 @@ import Image from './components/Image';
 function App() {
   const [memeData, setMemeData] = useState([])
   const [noResults, setNoResults] = useState(false)
-  const [searchResults, setSearchResults] = useState([])
+  // const [searchResults, setSearchResults] = useState([])
   const [memeImage, setMemeImage] = useState({
     topText: "",
     bottomText: "",

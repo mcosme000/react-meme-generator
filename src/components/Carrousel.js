@@ -2,7 +2,6 @@ import React from 'react'
 import Image from './Image'
 
 const Carrousel = ({data}) => {
-  console.log(data[0])
 
   return (
     <div>

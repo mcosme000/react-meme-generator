@@ -19,7 +19,7 @@ const Form = ({onSubmit, memeImage, setMemeImage }) => {
         <div className='input-container'>
           <input
             type="text"
-            placeholder="Some text"
+            placeholder="Add some top text"
             autofocus={true}
             name="topText"
             value={memeImage.topText}
@@ -27,7 +27,7 @@ const Form = ({onSubmit, memeImage, setMemeImage }) => {
           </input>
           <input
             type="text"
-            placeholder="Some text"
+            placeholder="Add some bottom text"
             autofocus={true}
             name="bottomText"
             value={memeImage.bottomText}
