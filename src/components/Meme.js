@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import SearchMeme from './SearchMeme';
+import Carrousel from './Carrousel';
 
 const Meme = () => {
   const [memeData, setMemeData] = useState([])
+  const [searchResults, setSearchResults] = useState([])
   const [memeImage, setMemeImage] = useState({
     topText: "",
     bottomText: "",
-    randomImage: "https://i.imgflip.com/23ls.jpg"
+    image: "https://i.imgflip.com/23ls.jpg",
+    memeTitle: ""
   })
 
   const handleSubmit = (e) => {
@@ -15,7 +19,8 @@ const Meme = () => {
     setMemeImage(prevState => {
       return {
         ...prevState,
-        randomImage: randomMeme
+        image: randomMeme,
+        memeTitle: memeData[randomNumber].name
       }
     })
   }
@@ -31,12 +36,20 @@ const Meme = () => {
     })
   }
 
+  const handleSearchMeme = (keyword) => {
+    const results = memeData.filter((meme) => {
+      return meme.name.toLowerCase().includes(keyword)
+    })
+    setSearchResults(results)
+  }
+
   useEffect(() => {
     console.log("Ran useEffect")
     fetch('https://api.imgflip.com/get_memes')
       .then(res => res.json())
       .then(data => setMemeData(data.data.memes))
   }, [])
+
 
   return (
     <div>
@@ -59,13 +72,16 @@ const Meme = () => {
             onChange={handleChange}>
           </input>
         </div>
-        <button onClick={handleSubmit} className="button input-btn">Search meme</button>
+        <button onClick={handleSubmit} className="button input-btn">Get random meme</button>
       </form>
+      <SearchMeme handleSubmit={handleSearchMeme}/>
+      {searchResults.length > 0 && <Carrousel searchArray={searchResults}/>}
       <div className="image-container">
-        <img src={memeImage.randomImage} alt="random meme" className="meme-image"/>
+        <img src={memeImage.image} alt="random meme" className="meme-image"/>
         <h2 className="meme-text top">{memeImage.topText}</h2>
         <h2 className="meme-text bottom">{memeImage.bottomText}</h2>
       </div>
+      <p>{memeImage.memeTitle}</p>
     </div>
   )
 };
