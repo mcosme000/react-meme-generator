@@ -31,7 +31,6 @@ function App() {
   }
 
   const handleSearchSubmit = (keyword) => {
-    console.log(keyword)
     const results = memeData.filter((meme) => {
       return meme.name.toLowerCase().includes(keyword)
     })
@@ -39,7 +38,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("Ran useEffect")
     fetch('https://api.imgflip.com/get_memes')
       .then(res => res.json())
       .then(data => setMemeData(data.data.memes))
