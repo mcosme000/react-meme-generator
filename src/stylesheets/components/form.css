@@ -3,6 +3,14 @@ form {
   padding: 10px;
 }
 
+.search-form {
+  display: flex;
+}
+
+.search-form input {
+  margin-right: 10px;
+}
+
 .input-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

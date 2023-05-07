@@ -34,7 +34,7 @@ const Form = ({onSubmit, memeImage, setMemeImage }) => {
             onChange={handleChange}>
           </input>
         </div>
-        <button onClick={onSubmit} className="button input-btn">Get random meme</button>
+        <button onClick={onSubmit} className="button input-btn wide-btn">Get random meme</button>
       </form>
     </div>
   )

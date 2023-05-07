@@ -15,14 +15,14 @@ const SearchForm = ({onSubmit}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="search-form">
       <input
         type="text"
         placeholder="search for a meme"
         onChange={handleChange}
         value={keyword}
       />
-      <button>Search meme</button>
+      <button className="button input-btn">Search meme</button>
   </form>
   )
 }
