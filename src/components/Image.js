@@ -1,10 +1,12 @@
 import React from 'react'
 
 const Image = ({data}) => {
+  console.log(data)
   const {topText, bottomText, image, memeTitle} = data
+
   return (
     <div>
-      <p>{memeTitle}</p>
+      <p>{memeTitle ? memeTitle : data.name}</p>
       <div className="image-container">
         <img src={image ? image : data.url} alt="random meme" className="meme-image"/>
         <h2 className="meme-text top">{topText}</h2>

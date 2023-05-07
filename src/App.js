@@ -4,10 +4,10 @@ import Header from './components/Header';
 import Form from './components/Form';
 import SearchForm from './components/SearchForm';
 import Image from './components/Image';
-import Carrousel from './components/Carrousel'
 
 function App() {
   const [memeData, setMemeData] = useState([])
+  const [noResults, setNoResults] = useState(false)
   const [searchResults, setSearchResults] = useState([])
   const [memeImage, setMemeImage] = useState({
     topText: "",
@@ -27,14 +27,25 @@ function App() {
         memeTitle: memeData[randomNumber].name
       }
     })
-    setSearchResults([])
+    setNoResults(false)
   }
 
   const handleSearchSubmit = (keyword) => {
     const results = memeData.filter((meme) => {
       return meme.name.toLowerCase().includes(keyword)
     })
-    setSearchResults(results)
+
+    if (results.length >= 1) {
+      setMemeImage(prevState => {
+        return {
+          ...prevState,
+          image: results[0].url,
+          memeTitle: results[0].name
+        }
+      })
+    } else {
+      setNoResults(true)
+    }
   }
 
   useEffect(() => {
@@ -50,7 +61,7 @@ function App() {
       <div className='container'>
         <Form onSubmit={handleSubmit} memeImage={memeImage} setMemeImage={setMemeImage} />
         <SearchForm onSubmit={handleSearchSubmit}/>
-        {searchResults.length > 0 ? <Carrousel data={searchResults}/> : <Image data={memeImage}/>}
+        {noResults ? <p>We couldn't find any memes</p> : <Image data={memeImage}/>}
       </div>
     </div>
   );

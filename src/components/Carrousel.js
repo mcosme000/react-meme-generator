@@ -2,15 +2,13 @@ import React from 'react'
 import Image from './Image'
 
 const Carrousel = ({data}) => {
-
-  const renderImages = data.map((img) => {
-    return <Image data={img} key={img.id} alt="Meme result"/>
-  })
+  console.log(data[0])
 
   return (
     <div>
-      <div>Carrousel</div>
-      {renderImages}
+      <p>Showing {data.length} result{data.length > 1 && "s"}:</p>
+      <Image data={data[0]} />
+      <Image data={data[1]} />
     </div>
   )
 }
